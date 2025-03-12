@@ -18,7 +18,6 @@ export const DataProvider = ({ children }) => {
   const [chartItemsPerPage, setChartItemsPerPage] = useState(10);
   const [dataSource, setDataSource] = useState(null);
 
-  // Sort procurement data
   const sortedData = useMemo(() => {
     let sortableData = [...procurementData];
     if (sortConfig.key !== null) {
@@ -35,7 +34,6 @@ export const DataProvider = ({ children }) => {
     return sortableData;
   }, [procurementData, sortConfig]);
 
-  // Paginated data for table
   const paginatedTableData = useMemo(() => {
     return sortedData.slice(
       currentPage * itemsPerPage, 
@@ -43,7 +41,6 @@ export const DataProvider = ({ children }) => {
     );
   }, [sortedData, currentPage, itemsPerPage]);
 
-  // Paginated data for chart
   const paginatedChartData = useMemo(() => {
     return sortedData.slice(
       chartPage * chartItemsPerPage, 
@@ -76,7 +73,6 @@ export const DataProvider = ({ children }) => {
       setVolume('');
       setDataSource('manual');
 
-      // Set default columns if not already set
       if (columns.length === 0) {
         setColumns(['supplier', 'volume']);
       }

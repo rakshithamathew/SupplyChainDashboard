@@ -22,8 +22,7 @@ const FileUploadForm = () => {
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-      // Assuming the first row is the header and the data starts from the second row
-      const headers = jsonData[0]; // Extract column names from the first row
+      const headers = jsonData[0]; 
       const data = jsonData.slice(1).map((row) => {
         const rowData = {};
         headers.forEach((header, index) => {
@@ -32,11 +31,10 @@ const FileUploadForm = () => {
         return rowData;
       });
 
-      setColumns(headers); // Set column names for dropdowns
-      setProcurementData(data); // Set the data
-      setDataSource('file'); // Set data source to file
+      setColumns(headers); 
+      setProcurementData(data); 
+      setDataSource('file'); 
       
-      // Reset pagination when loading new data
       setCurrentPage(0);
       setChartPage(0);
     };

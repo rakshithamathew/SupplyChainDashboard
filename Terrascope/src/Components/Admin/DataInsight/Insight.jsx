@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-  BarChart,
-  Bar,
   LineChart,
   Line,
   XAxis,
@@ -9,15 +7,11 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
+  ResponsiveContainer
 } from "recharts";
 import { MapPin, Clipboard, TrendingUp, Filter, Search, X } from "lucide-react";
 import SpendByRegionChart from "./SpendByRegionChart";
 import SpendByCategoryChart from "./SpendByCategoryChart";
-// Sample data
 const regionData = [
   { name: "North America", value: 4300000 },
   { name: "Europe", value: 3200000 },
@@ -193,13 +187,10 @@ const Insight = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* <h1 className="text-xl font-semibold">Supply Chain Analytics</h1> */}
             <div className="flex items-center space-x-4">
-              {/* Filter dropdown */}
               {showFilters && (
                 <div className="bg-white border-b border-gray-200 py-3 px-8">
                   <div className="flex justify-between items-center">
@@ -232,7 +223,6 @@ const Insight = () => {
                 </div>
               )}
 
-              {/* Navigation */}
               <div className="pt-3">
                 <div className="flex space-x-4 mb-4 mt-3">
                   <button
@@ -292,11 +282,9 @@ const Insight = () => {
         </div>
       </header>
 
-      {/* Content */}
       <main className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {selectedTab === "overview" && (
           <div className="space-y-6">
-            {/* Summary cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg shadow p-6">
                 <div className="flex items-center justify-between">
@@ -342,7 +330,6 @@ const Insight = () => {
               </div>
             </div>
 
-            {/* Charts */}
             <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
               <div className="bg-white rounded-lg shadow p-6">
                 <h3 className="text-lg font-medium text-gray-900 mb-4">
@@ -512,9 +499,7 @@ const Insight = () => {
                       <span className="text-xs font-medium text-gray-500">
                         {insight.category}
                       </span>
-                      <button className="text-sm text-blue-600 hover:text-blue-800 font-medium">
-                        View Details
-                      </button>
+                      
                     </div>
                   </div>
                 ))}

@@ -89,10 +89,6 @@ export const Card = ({
               </ul>
 
             </div>
-            {/* <div className="absolute flex items-center end-0 bottom-0 h-full m-0">
-              {step > 0 ? <Button btnInfo={btnInfo[0]} /> : <Button btnInfo={btnInfo[0]} disabled={true} />}
-              {step < tutorialData.length - 1 ? <Button btnInfo={btnInfo[1]} /> : <Button btnInfo={btnInfo[1]} disabled={true} />}
-            </div> */}
           </div>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import mockData from '../../../MockData.json'; // Import the JSON data
-
+import mockData from '../../../MockData.json'; 
 const ChoroplethMap = () => {
   const [geoData, setGeoData] = useState(null);
   const mapRef = useRef(null);

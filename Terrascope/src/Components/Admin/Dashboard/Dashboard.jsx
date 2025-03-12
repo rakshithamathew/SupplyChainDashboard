@@ -3,7 +3,7 @@ import Navbar from "../../../Components/NavBar/Navbar";
 import Anomalies from "../../../Components/Admin/Anomalies/Anomalies";
 import Trends from "../../../Components/Admin/Trends/Trends";
 import DataInsight from "../../../Components/Admin/DataInsight/DataInsight";
-import Emission from "../../../Components/Admin/Sustainabilty/Emission";
+import EmissionDashboard from "../../../Components/Admin/Sustainabilty/EmissionDashboard";
 
 const Dashboards = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -41,7 +41,7 @@ const Dashboards = () => {
       label: "Sustainability",
       content: (
         <div className="col-span-2 bg-white shadow-lg rounded-2xl">
-          <Emission className="w-full" />
+          <EmissionDashboard className="w-full" />
         </div>
       ),
     },
@@ -54,14 +54,6 @@ const Dashboards = () => {
       </div>
 
       <div className="flex-1 mt-2 p-2 overflow-auto flex flex-col">
-        {/* <h1
-          className="text-3xl font-semibold text-gray-600 bg-gradient-to-r from-gray-100 via-purple-100 to-gray-100 
-          py-2 px-2 rounded-xl text-center shadow-md"
-        >
-          Anomaly Overview
-        </h1> */}
-
-        {/* Tab Buttons */}
         <div className="flex mt-1 border-b">
           {tabs.map((tab) => (
             <button
@@ -78,7 +70,6 @@ const Dashboards = () => {
           ))}
         </div>
 
-        {/* Tab Content */}
         <div className="mt-3">
           {tabs.map(
             (tab) =>

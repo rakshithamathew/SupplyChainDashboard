@@ -23,7 +23,6 @@ const ChartSection = () => {
     setChartItemsPerPage
   } = useContext(DataContext);
 
-  // Define the chart data
   const chartData = {
     labels: paginatedChartData.map((item) => item[xAxis]),
     datasets: [
@@ -37,7 +36,6 @@ const ChartSection = () => {
     ],
   };
 
-  // Define chart options
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -48,7 +46,6 @@ const ChartSection = () => {
     },
   };
 
-  // Render the selected chart
   const renderChart = () => {
     switch (chartType) {
       case 'bar':
@@ -65,7 +62,6 @@ const ChartSection = () => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        {/* Chart Type Dropdown */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Chart Type</label>
           <select
@@ -79,7 +75,6 @@ const ChartSection = () => {
           </select>
         </div>
 
-        {/* X-axis and Y-axis Dropdowns */}
         {columns.length > 0 && (
           <>
             <div>
@@ -114,12 +109,10 @@ const ChartSection = () => {
         )}
       </div>
 
-      {/* Chart */}
       <div className="h-64 md:h-80 mb-4">
         {renderChart()}
       </div>
 
-      {/* Chart Pagination Controls */}
       {procurementData.length > chartItemsPerPage && (
         <Pagination
           currentPage={chartPage}

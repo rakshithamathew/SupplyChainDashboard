@@ -100,7 +100,6 @@ const DataTable = () => {
         </table>
       </div>
 
-      {/* Table Pagination Controls */}
       <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
         <Pagination
           currentPage={currentPage}

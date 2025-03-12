@@ -1,31 +1,3 @@
-// import { motion } from "framer-motion";
-// import { Truck, DollarSign, AlertTriangle, ShoppingCart } from "lucide-react";
-
-// const kpis = [
-//   { title: "Suppliers", value: "120", icon: <Truck className="text-green-500 w-6 h-6" /> },
-//   { title: "Total Revenue", value: "$1.2M", icon: <DollarSign className="text-blue-500 w-6 h-6" /> },
-//   { title: "Delays", value: "5%", icon: <AlertTriangle className="text-red-500 w-6 h-6" /> },
-//   { title: "On-Time Delivery", value: "95%", icon: <ShoppingCart className="text-yellow-500 w-6 h-6" /> }
-// ];
-
-// export default function KPIs() {
-//   return (
-//     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-2">
-//       {kpis.map((kpi, index) => (
-//         <motion.div
-//           key={index}
-//           whileHover={{ scale: 1.03 }}
-//           whileTap={{ scale: 0.97 }}
-//           className="p-2 rounded-md shadow-sm flex flex-col items-center border"
-//         >
-//           <div className="mb-1">{kpi.icon}</div>
-//           <p className="text-xl font-semibold text-gray-900">{kpi.value}</p>
-//           <h3 className="text-sm font-medium text-gray-400">{kpi.title}</h3>
-//         </motion.div>
-//       ))}
-//     </div>
-//   );
-// }
 
 import React from 'react';
 import { TrendingUp, MapPin, AlertTriangle, Filter } from 'lucide-react';

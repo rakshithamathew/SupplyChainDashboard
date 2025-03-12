@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-// Sample random data for each tab
 const suppliers = [
   { name: "Fresh Farms Co", progress: 70 },
   { name: "Global Grain Ltd", progress: 50 },
@@ -23,7 +22,6 @@ const regions = [
   { name: "Africa", progress: 40 },
 ];
 
-// Tabs and their data
 const tabs = {
   suppliers,
   products,
@@ -33,14 +31,12 @@ const tabs = {
 export default function SupplierRevenueChart() {
   const [selectedTab, setSelectedTab] = useState("suppliers");
 
-  // Function to switch between tabs
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
   };
 
   return (
     <div>
-      {/* Tab Navigation */}
       <div className="flex space-x-4 mb-4">
         <button
           onClick={() => handleTabChange("suppliers")}
@@ -74,7 +70,6 @@ export default function SupplierRevenueChart() {
         </button>
       </div>
 
-      {/* List and Progress Bar Section */}
       <div className="space-y-2">
         {tabs[selectedTab].map((item, index) => (
           <motion.div
@@ -83,12 +78,10 @@ export default function SupplierRevenueChart() {
             whileTap={{ scale: 0.97 }}
             className="p-2 rounded-md shadow-sm flex items-center border"
           >
-            {/* Name */}
             <p className="text-sm font-semibold text-gray-600 mr-4 w-1/3">
               {item.name}
             </p>
 
-            {/* Progress Bar */}
             <div className="flex-1 flex items-center">
               <div className="w-full h-2 bg-gray-200 rounded-full">
                 <div

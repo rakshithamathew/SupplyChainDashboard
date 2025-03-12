@@ -21,21 +21,17 @@ const Anomalies = () => {
   const [selectedYear, setSelectedYear] = useState("2019");
   const [selectedCountry, setSelectedCountry] = useState("USA");
 
-  // Extract years from the JSON data
   const years = Object.keys(mockData.yearly_data);
-  // Extract countries only if the selected year is valid
   const countries =
     selectedYear && mockData.yearly_data[selectedYear]
       ? Object.keys(mockData.yearly_data[selectedYear].country || {})
       : [];
 
-  // Handle year change
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
-    setSelectedCountry(""); // Reset country when year changes
+    setSelectedCountry(""); 
   };
 
-  // Handle country change
   const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
   };
@@ -43,7 +39,7 @@ const Anomalies = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <div className="flex items-start justify-between w-full mb-2">
-        <div className="flex-1 ">{/* <KPIs /> */}</div>
+        <div className="flex-1 "></div>
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6">
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
@@ -52,13 +48,11 @@ const Anomalies = () => {
               </h2>
 
               <div
-                className="flex flex-row gap-4" // Changed flex-direction to row and adjusted gap
-                style={{ width: "20%", paddingRight: "20px" }} // Adjusted width to fit both dropdowns
+                className="flex flex-row gap-4" 
+                style={{ width: "20%", paddingRight: "20px" }} 
               >
-                {/* Year Dropdown */}
                 <div style={{ flex: 1 }}>
                   {" "}
-                  {/* Added flex: 1 to allow equal spacing */}
                   <Typography
                     style={{
                       fontSize: "11px",
@@ -88,10 +82,8 @@ const Anomalies = () => {
                   </FormControl>
                 </div>
 
-                {/* Country Dropdown */}
                 <div style={{ flex: 1 }}>
                   {" "}
-                  {/* Added flex: 1 to allow equal spacing */}
                   <Typography
                     style={{
                       fontSize: "11px",
@@ -167,7 +159,6 @@ const Anomalies = () => {
               </div>
             </div>
 
-            {/* Procurement Table */}
             <div className="bg-white shadow-lg rounded-2xl p-6 flex flex-col w-full mt-6 flex-grow">
               <ProcurementDataTable />
             </div>

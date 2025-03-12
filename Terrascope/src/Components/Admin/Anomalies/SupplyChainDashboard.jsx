@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { Bell, AlertTriangle, Map, Filter, ArrowUpDown } from 'lucide-react';
-
-// Sample data
 const anomalyData = [
   { id: 1, supplier: 'Fresh Farms Co.', region: 'North America', country: 'USA', category: 'Milk', amount: 82500, expected: 65000, date: '2025-03-01', severity: 'high', type: 'Unexpectedly High Purchase' },
   { id: 2, supplier: 'Global Grain Ltd.', region: 'Europe', country: 'France', category: 'Grains', amount: 12300, expected: 45000, date: '2025-03-02', severity: 'high', type: 'Unexpectedly Low Purchase' },
@@ -40,7 +38,6 @@ const SupplyChainDashboard = () => {
   
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold text-gray-800">Supply Chain Analytics</h1>
@@ -60,10 +57,7 @@ const SupplyChainDashboard = () => {
           </div>
         </div>
       </header>
-
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
-        {/* Tabs */}
         <div className="flex border-b border-gray-200 mb-6">
           <button
             className={`px-4 py-2 font-medium ${activeTab === 'overview' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
@@ -79,10 +73,8 @@ const SupplyChainDashboard = () => {
           </button>
         </div>
 
-        {/* Overview Section */}
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Summary Cards */}
             <div className="col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
                 <div className="flex items-center justify-between">
@@ -118,7 +110,6 @@ const SupplyChainDashboard = () => {
               </div>
             </div>
 
-            {/* Trend Chart */}
             <div className="col-span-3 lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-gray-700">Anomaly Trends</h3>
@@ -156,7 +147,6 @@ const SupplyChainDashboard = () => {
               </div>
             </div>
 
-            {/* Distribution */}
             <div className="col-span-3 lg:col-span-1 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <h3 className="text-lg font-medium text-gray-700 mb-4">Anomalies by Region</h3>
               <div className="h-64">
@@ -309,14 +299,12 @@ const SupplyChainDashboard = () => {
                   <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                     <button className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                       <span className="sr-only">Previous</span>
-                      {/* Icon */}
                     </button>
                     <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-blue-600 hover:bg-gray-50">
                       1
                     </button>
                     <button className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                       <span className="sr-only">Next</span>
-                      {/* Icon */}
                     </button>
                   </nav>
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IoStatsChart, IoWarning } from "react-icons/io5";
+import { IoStatsChart, IoWarning, IoPerson, IoLogOut } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
@@ -19,14 +19,21 @@ const Navbar = () => {
     },
     {
       href: "./Main",
-      title: "Procurement Overveiw",
+      title: "Procurement Overview",
       icon: <IoStatsChart className="h-6 w-6 text-gray-600" />,
+    }
+  ];
+
+  const userLinks = [
+    {
+      title: "User Profile",
+      icon: <IoPerson className="h-6 w-6 text-gray-600" />,
     },
-    // {
-    //   href: "./Emission",
-    //   title: "Sustainability",
-    //   icon: <IoStatsChart className="h-6 w-6 text-gray-600" />,
-    // },
+    {
+      href: "./LoginPage",
+      title: "Logout",
+      icon: <IoLogOut className="h-6 w-6 text-gray-600" />,
+    }
   ];
 
   const renderNavLink = (link) => (
@@ -69,6 +76,12 @@ const Navbar = () => {
           <React.Fragment key={index}>{renderNavLink(link)}</React.Fragment>
         ))}
       </nav>
+
+      <div className="mt-auto mb-4 flex flex-col space-y-4 px-2 lg:px-4">
+        {userLinks.map((link, index) => (
+          <React.Fragment key={index}>{renderNavLink(link)}</React.Fragment>
+        ))}
+      </div>
     </div>
   );
 };

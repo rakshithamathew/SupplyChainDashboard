@@ -3,7 +3,6 @@ import mockData from "../../../MockData.json";
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 const DuplicatePaymentChart = ({ selectedYear, selectedCountry }) => {
@@ -29,18 +28,15 @@ const DuplicatePaymentChart = ({ selectedYear, selectedCountry }) => {
   const backgroundColors = months.map(month => {
     const monthData = paymentHistory.find(item => item.month === month);
     if (monthData.amount2) {
-        // Create a red gradient for duplicate payments
         const redGradient = document.createElement('canvas').getContext('2d');
         const gradient = redGradient.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, '#E01C34'); // Bright red
-        gradient.addColorStop(1, 'rgba(255, 99, 132, 0.2)'); // Faded red
-        return gradient;
+        gradient.addColorStop(0, '#E01C34');
+        gradient.addColorStop(1, 'rgba(255, 99, 132, 0.2)'); 
     } else {
-        // Create a purple gradient for non-duplicate payments
         const purpleGradient = document.createElement('canvas').getContext('2d');
         const gradient = purpleGradient.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, '#722AE6'); // Bright purple
-        gradient.addColorStop(1, '#F8CEEC'); // Faded purple
+        gradient.addColorStop(0, '#722AE6'); 
+        gradient.addColorStop(1, '#F8CEEC'); 
         return gradient;
     }
 });
@@ -51,14 +47,13 @@ const chartData = {
         {
             label: 'Successfull Payment',
             data: allAmounts,
-            borderColor: '#E01C34', // Red border for all bars
-            backgroundColor: backgroundColors, // Apply gradients based on duplicate/non-duplicate
-            fill: true, // Bar charts are filled by default
-            barThickness: 30, // Set the thickness of the bars
+            borderColor: '#E01C34', 
+            backgroundColor: backgroundColors, 
+            fill: true, 
+            barThickness: 30, 
         },
     ],
 };
-  // Highlight duplicate amounts in tooltip
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -69,9 +64,7 @@ const chartData = {
             const amount = tooltipItem.raw;
             const monthData = paymentHistory.find(item => item.month === month);
 
-            // Check if the current bar is for a month with two payments
             if (monthData.amount2 && amount === parseInt(monthData.amount.replace('$', '').replace(',', ''))) {
-              // Show both payments for months with duplicates
               return `Payment 1: ${monthData.amount} | Payment 2: ${monthData.amount2}`;
             }
             return `$${amount}`;

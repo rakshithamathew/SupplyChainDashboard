@@ -1,6 +1,6 @@
 import React from "react";
 import ChoroplethMap from "./MapComponent";
-import Insight from "./Insight"; // Ensure this matches the file name
+import Insight from "./Insight";
 
 const DataInsight = () => {
   return (

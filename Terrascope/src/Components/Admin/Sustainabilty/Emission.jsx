@@ -12,7 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import {
-  Leaf,
   TrendingDown,
   AlertTriangle,
   Truck,
@@ -20,10 +19,8 @@ import {
   Info,
   ArrowRight,
   Award,
-  BarChart2,
 } from "lucide-react";
 
-// Sample data - would come from your API in a real application
 const emissionsData = [
   { year: "2022", value: 120, target: 110 },
   { year: "2023", value: 100, target: 90 },
@@ -345,11 +342,6 @@ const Emission = () => {
                       {supplier.change > 0 ? "+" : ""}
                       {supplier.change}%
                     </span>
-                  </td>
-                  <td className="px-4 py-3 text-sm">
-                    <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                      View Details
-                    </button>
                   </td>
                 </tr>
               ))}

@@ -18,7 +18,7 @@ const Pagination = ({
 
   const handleItemsPerPageChange = (e) => {
     setItemsPerPage(parseInt(e.target.value));
-    setCurrentPage(0); // Reset to the first page when changing items per page
+    setCurrentPage(0); 
   };
 
   return (

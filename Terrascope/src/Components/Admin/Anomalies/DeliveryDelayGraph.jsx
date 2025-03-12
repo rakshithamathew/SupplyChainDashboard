@@ -22,7 +22,6 @@ ChartJS.register(
   Legend
 );
 
-// Function to generate gradient colors
 const generateGradient = (ctx, chartArea, color1, color2) => {
   const gradient = ctx.createLinearGradient(
     0,
@@ -68,16 +67,14 @@ const DeliveryDelayChart = ({ selectedYear, selectedCountry }) => {
       const ctx = chartRef.current.ctx;
       const chartArea = chartRef.current.chartArea;
 
-      // Define your fixed colors
       const fixedColors = [
-        { color1: 'red', color2: 'rgba(75, 192, 192, 0.2)' }, // Teal
-        { color1: 'green', color2: 'rgba(153, 102, 255, 0.2)' }, // Purple
-        { color1: 'purple', color2: 'rgba(255, 159, 64, 0.2)' }, // Orange
+        { color1: 'red', color2: 'rgba(75, 192, 192, 0.2)' }, 
+        { color1: 'green', color2: 'rgba(153, 102, 255, 0.2)' },
+        { color1: 'purple', color2: 'rgba(255, 159, 64, 0.2)' }, 
       ];
 
-      // Assign fixed colors to each dataset
       chartData.datasets = chartData.datasets.map((dataset, index) => {
-        const colors = fixedColors[index % fixedColors.length]; // Cycle through fixed colors
+        const colors = fixedColors[index % fixedColors.length]; 
         return {
           ...dataset,
           backgroundColor: generateGradient(ctx, chartArea, colors.color1, colors.color2)
