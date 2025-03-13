@@ -25,35 +25,40 @@ const DuplicatePaymentChart = ({ selectedYear, selectedCountry }) => {
   const amounts2 = paymentHistory.map(item => item.amount2 ? parseInt(item.amount2.replace('$', '').replace(',', '')) : null).filter(amount => amount !== null);
 
   const allAmounts = [...amounts, ...amounts2];
+
   const backgroundColors = months.map(month => {
     const monthData = paymentHistory.find(item => item.month === month);
-    if (monthData.amount2) {
-        const redGradient = document.createElement('canvas').getContext('2d');
-        const gradient = redGradient.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, '#E01C34');
-        gradient.addColorStop(1, 'rgba(255, 99, 132, 0.2)'); 
-    } else {
-        const purpleGradient = document.createElement('canvas').getContext('2d');
-        const gradient = purpleGradient.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(0, '#722AE6'); 
-        gradient.addColorStop(1, '#F8CEEC'); 
-        return gradient;
-    }
-});
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    let gradient;
 
-const chartData = {
+    if (monthData.amount2) {
+      gradient = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient.addColorStop(0, '#E01C34');
+      gradient.addColorStop(1, 'rgba(255, 99, 132, 0.2)');
+    } else {
+      gradient = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient.addColorStop(0, '#722AE6');
+      gradient.addColorStop(1, '#F8CEEC');
+    }
+
+    return gradient;
+  });
+
+  const chartData = {
     labels: months,
     datasets: [
-        {
-            label: 'Successfull Payment',
-            data: allAmounts,
-            borderColor: '#E01C34', 
-            backgroundColor: backgroundColors, 
-            fill: true, 
-            barThickness: 30, 
-        },
+      {
+        label: 'Successful Payment',
+        data: allAmounts,
+        borderColor: 'red',
+        backgroundColor: backgroundColors,
+        fill: true,
+        barThickness: 30,
+      },
     ],
-};
+  };
+
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -72,7 +77,7 @@ const chartData = {
         },
       },
     },
-   scales: {
+    scales: {
       x: {
         grid: {
           display: false,

@@ -30,7 +30,7 @@ const Navbar = () => {
       icon: <IoPerson className="h-6 w-6 text-gray-600" />,
     },
     {
-      href: "./LoginPage",
+      href: "./",
       title: "Logout",
       icon: <IoLogOut className="h-6 w-6 text-gray-600" />,
     }

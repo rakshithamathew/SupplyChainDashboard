@@ -16,7 +16,7 @@ const AddDataForm = () => {
       <h2 className="text-xl font-semibold mb-4">Add Procurement Data</h2>
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Supplier Name</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">X-Axis</label>
           <input
             type="text"
             value={supplier}
@@ -26,7 +26,7 @@ const AddDataForm = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Volume</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Y-Axis</label>
           <input
             type="number"
             value={volume}

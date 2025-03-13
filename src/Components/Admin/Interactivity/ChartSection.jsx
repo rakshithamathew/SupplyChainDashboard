@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import { DataContext } from './DataContext';
@@ -7,21 +7,41 @@ import Pagination from './Pagination';
 Chart.register(...registerables);
 
 const ChartSection = () => {
-  const { 
-    chartType, 
-    setChartType, 
-    columns, 
-    xAxis, 
-    setXAxis, 
-    yAxis, 
-    setYAxis, 
+  const {
+    chartType,
+    setChartType,
+    columns,
+    xAxis,
+    setXAxis,
+    yAxis,
+    setYAxis,
     procurementData,
     paginatedChartData,
     chartPage,
     setChartPage,
     chartItemsPerPage,
-    setChartItemsPerPage
+    setChartItemsPerPage,
   } = useContext(DataContext);
+
+  const chartRef = useRef(null);
+
+  const applyGradient = (chartInstance) => {
+    if (chartInstance && chartInstance.ctx) {
+      const ctx = chartInstance.ctx;
+      const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient.addColorStop(0, '#0039a6'); 
+      gradient.addColorStop(1, '#7CB9E8'); 
+      chartInstance.data.datasets[0].backgroundColor = gradient;
+      chartInstance.update(); 
+    }
+  };
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const chartInstance = chartRef.current;
+      applyGradient(chartInstance);
+    }
+  }, [paginatedChartData, xAxis, yAxis, chartType]);
 
   const chartData = {
     labels: paginatedChartData.map((item) => item[xAxis]),
@@ -29,7 +49,7 @@ const ChartSection = () => {
       {
         label: yAxis,
         data: paginatedChartData.map((item) => item[yAxis]),
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)', 
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
@@ -49,13 +69,13 @@ const ChartSection = () => {
   const renderChart = () => {
     switch (chartType) {
       case 'bar':
-        return <Bar data={chartData} options={options} />;
+        return <Bar ref={chartRef} data={chartData} options={options} />;
       case 'pie':
-        return <Pie data={chartData} options={options} />;
+        return <Pie ref={chartRef} data={chartData} options={options} />;
       case 'line':
-        return <Line data={chartData} options={options} />;
+        return <Line ref={chartRef} data={chartData} options={options} />;
       default:
-        return <Bar data={chartData} options={options} />;
+        return <Bar ref={chartRef} data={chartData} options={options} />;
     }
   };
 

@@ -10,12 +10,16 @@ const SupplierGraph = ({ selectedYear, selectedCountry }) => {
     return <div>Please select a year and country to view data.</div>;
   }
 
-  const generateRandomColor = () => {
-    return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.8)`;
-  };
+  // Define three constant colors
+  const colors = [
+    'rgba(255, 99, 132, 0.8)', // Red
+    'rgba(54, 162, 235, 0.8)', // Blue
+    'rgba(75, 192, 192, 0.8)', // Green
+  ];
 
   const getAggregatedData = () => {
     let aggregatedData = [];
+    let colorIndex = 0; // Index to cycle through the colors array
 
     if (selectedYear === "all" && selectedCountry === "all") {
       Object.keys(mockData.yearly_data).forEach((year) => {
@@ -23,18 +27,19 @@ const SupplierGraph = ({ selectedYear, selectedCountry }) => {
           const suppliers = mockData.yearly_data[year].country[country].regions.North.suppliers;
           suppliers.forEach((supplier) => {
             const volumes = supplier?.procurement_KPIs?.seasonal_high_low?.monthly_purchase_volume?.map((item, index) => ({
-              x: index, 
-              y: item.volume, 
+              x: index,
+              y: item.volume,
             }));
             if (volumes) {
               aggregatedData.push({
                 label: `${supplier.name} (${year}, ${country})`,
                 data: volumes,
-                backgroundColor: generateRandomColor(), 
-                borderColor: generateRandomColor(),
+                backgroundColor: colors[colorIndex % colors.length], // Cycle through colors
+                borderColor: colors[colorIndex % colors.length], // Cycle through colors
                 pointRadius: 6,
-                pointHoverRadius: 8, 
+                pointHoverRadius: 8,
               });
+              colorIndex++; // Move to the next color
             }
           });
         });
@@ -52,11 +57,12 @@ const SupplierGraph = ({ selectedYear, selectedCountry }) => {
               aggregatedData.push({
                 label: `${supplier.name} (${year})`,
                 data: volumes,
-                backgroundColor: generateRandomColor(),
-                borderColor: generateRandomColor(),
+                backgroundColor: colors[colorIndex % colors.length], // Cycle through colors
+                borderColor: colors[colorIndex % colors.length], // Cycle through colors
                 pointRadius: 6,
                 pointHoverRadius: 8,
               });
+              colorIndex++; // Move to the next color
             }
           });
         }
@@ -73,11 +79,12 @@ const SupplierGraph = ({ selectedYear, selectedCountry }) => {
             aggregatedData.push({
               label: `${supplier.name} (${country})`,
               data: volumes,
-              backgroundColor: generateRandomColor(),
-              borderColor: generateRandomColor(),
+              backgroundColor: colors[colorIndex % colors.length], // Cycle through colors
+              borderColor: colors[colorIndex % colors.length], // Cycle through colors
               pointRadius: 6,
               pointHoverRadius: 8,
             });
+            colorIndex++; // Move to the next color
           }
         });
       });
@@ -92,11 +99,12 @@ const SupplierGraph = ({ selectedYear, selectedCountry }) => {
           aggregatedData.push({
             label: supplier.name,
             data: volumes,
-            backgroundColor: generateRandomColor(),
-            borderColor: generateRandomColor(),
+            backgroundColor: colors[colorIndex % colors.length], // Cycle through colors
+            borderColor: colors[colorIndex % colors.length], // Cycle through colors
             pointRadius: 6,
             pointHoverRadius: 8,
           });
+          colorIndex++; // Move to the next color
         }
       });
     }
@@ -123,7 +131,7 @@ const SupplierGraph = ({ selectedYear, selectedCountry }) => {
           text: 'Months',
         },
         ticks: {
-          callback: (value, index) => labels[index], 
+          callback: (value, index) => labels[index],
         },
       },
       y: {
